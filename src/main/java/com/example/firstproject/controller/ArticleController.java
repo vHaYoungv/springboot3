@@ -27,20 +27,16 @@ public class ArticleController {
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form) {
         log.info(form.toString()); //sout 대신 log.info
-//        System.out.println(form.toString());
 
         // 1. DTO를 엔티티로 변환
         Article article = form.toEntity(); //DTO를 엔티티로 변환하려면, 엔티티 클래스를 만들어야 한다. (여기서 Article)
         log.info(article.toString());
-//        System.out.println(article.toString());
-
-        //Article : 엔티티 ArticleForm: DTO
 
         // 2. 리파지터리로 엔티티를 DB에 저장
-        Article saved = articleRepository.save(article); //레퍼지토리에 저장한걸 왜 반환?
+        Article saved = articleRepository.save(article); //레퍼지토리에 저장한걸 왜 다시 반환? -> 이 과정에서 id를 부여 받기 때문에
         log.info(saved.toString());
-//        System.out.println(saved.toString());
-        return "";
+
+        return "redirect:/articles/" + saved.getId();
     }
 
     @GetMapping("/articles/{id}")
