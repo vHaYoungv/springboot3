@@ -73,4 +73,20 @@ public class ArticleController {
         model.addAttribute("article", articleEntity);
         return "articles/edit";
     }
+
+    @PostMapping("/articles/update")
+    public String update(ArticleForm form) { //Post는 Form 데이터를 받는다
+        log.info(form.toString());
+
+        // 1. DTO를 엔티티로 변환하기
+        Article articleEntity = form.toEntity();
+        log.info(articleEntity.toString());
+
+        // 2. 엔티티를 DB에 저장하기
+        Article saved = articleRepository.save(articleEntity);
+        log.info(saved.toString());
+
+        // 3. 수정 결과 페이지로 리다이렉트하기
+        return "redirect:/articles/" + articleEntity.getId();
+    }
 }
