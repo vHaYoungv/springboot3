@@ -3,6 +3,7 @@ package com.example.firstproject.dto;
 import com.example.firstproject.entity.Article;
 import lombok.*;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class ArticleForm {
