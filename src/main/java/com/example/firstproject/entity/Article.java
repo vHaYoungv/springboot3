@@ -23,6 +23,15 @@ public class Article {
     public Long getId() {
         return id;
     }
+
+    public void patch(Article article) {
+        if (article.title != null) {
+            this.title = article.title;
+        }
+        if (article.content != null) {
+            this.content = article.content;
+        }
+    }
     // Article 생성자 추가: Entity도 생성자 필요하다
 //    public Article(Long id, String title, String content) {
 //        this.id = id;
