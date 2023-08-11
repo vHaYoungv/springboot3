@@ -6,6 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Getter
 public class ArticleForm {
     private Long id;
     private String title; //제목을 받을 필드
